@@ -281,5 +281,78 @@ Cuando **no** usarlo:
 Los **custom hooks** son una herramienta potente y permiten organizar mejor el código y hacerlo más reutilizable.
 
 
+//Que es un pull request
+Un **Pull Request** (PR) es una solicitud para **integrar los cambios** que has hecho en una rama de tu repositorio a otra rama, generalmente al **repositorio principal** o a una rama de desarrollo. En términos simples, es una forma de decir: "He terminado de hacer algunos cambios en mi rama, ¿pueden revisarlos e integrarlos a la rama principal o de desarrollo?"
+
+### En qué contexto se utiliza un Pull Request:
+
+- **Colaboración en proyectos**: Los Pull Requests son comunes cuando varias personas están trabajando en un proyecto y necesitan revisar y aprobar cambios antes de que se integren en la base de código principal. Esto es especialmente útil en plataformas como **GitHub**, **GitLab** y **Bitbucket**.
+  
+- **Revisión de código**: Los PR permiten que los compañeros de equipo revisen tu código antes de fusionarlo (merge) a la rama principal o a otra rama relevante. Durante la revisión, se pueden discutir aspectos como la funcionalidad, la legibilidad, el estilo del código y las posibles mejoras.
+
+### Flujo básico de trabajo con un Pull Request:
+
+1. **Hacer cambios en una rama**:  
+   Comienzas haciendo cambios en una **rama separada** (por ejemplo, `feature-xyz`, `bugfix-123`, etc.). Este es un proceso estándar para evitar que los cambios se integren directamente en la rama principal (por lo general, la rama `main` o `master`).
+
+2. **Pushear los cambios al repositorio remoto**:  
+   Una vez que hayas hecho tus cambios y los hayas confirmado (committed) en tu máquina local, los **empujas** (push) a tu repositorio remoto, es decir, a GitHub, GitLab o cualquier otra plataforma que uses.
+
+   ```bash
+   git push origin feature-xyz
+   ```
+
+3. **Crear un Pull Request**:  
+   Después de hacer push de tu rama a GitHub, GitLab, etc., puedes ir al repositorio remoto y crear un Pull Request. Esto significa que le estás diciendo a los administradores del repositorio (o a tu equipo) que deseas que los cambios de tu rama se revisen e integren en la rama principal (o cualquier otra rama de destino).
+
+   En GitHub, puedes hacerlo desde la interfaz web, seleccionando la rama que quieres integrar y la rama en la que deseas fusionar los cambios (por ejemplo, `main` o `develop`).
+
+4. **Revisión del código**:  
+   Los colaboradores o mantenedores del repositorio pueden revisar tu Pull Request. Durante esta revisión, pueden dejar comentarios, sugerir mejoras, e incluso solicitar cambios adicionales antes de aprobar el PR.
+
+5. **Aprobación y fusión (merge)**:  
+   Una vez que el PR ha sido revisado y aprobado, la rama con los cambios se fusiona con la rama principal (o cualquier otra rama de destino). Esto integra efectivamente tus cambios en el proyecto.
+
+   El PR generalmente se cierra después de que se realiza la fusión (merge), y los cambios se convierten parte del historial de la rama principal.
+
+### ¿Por qué usar Pull Requests?
+
+- **Control de calidad**: Los PRs permiten que otros revisen el código antes de que se fusione. Esto reduce errores y mejora la calidad del código.
+- **Colaboración**: Fomentan el trabajo en equipo, ya que otros pueden aportar ideas o sugerencias sobre tu código.
+- **Documentación**: Los PRs actúan como una forma de documentar los cambios importantes que se están haciendo. Además, cada PR tiene un historial y comentarios que pueden ser útiles a largo plazo.
+- **Manejo de conflictos**: Si dos personas trabajan en el mismo archivo, Git podría generar un conflicto. Con los PRs, puedes ver y resolver estos conflictos antes de que los cambios se fusionen.
+
+### Ejemplo de flujo con Pull Request:
+
+1. **Crear una rama**:
+   ```bash
+   git checkout -b feature-login
+   ```
+
+2. **Hacer algunos cambios y confirmarlos**:
+   ```bash
+   git add .
+   git commit -m "Añadir pantalla de login"
+   ```
+
+3. **Subir la rama al repositorio remoto**:
+   ```bash
+   git push origin feature-login
+   ```
+
+4. **Crear el Pull Request**:
+   - En la plataforma (GitHub, GitLab, etc.), crear un nuevo PR para fusionar la rama `feature-login` a `main`.
+
+5. **Revisión y fusión**:
+   - El equipo revisa el PR, hace comentarios o sugiere cambios.
+   - Cuando todo está listo, el PR se aprueba y se fusiona con `main`.
+
+### Resumen:
+
+Un **Pull Request** es una solicitud para revisar y fusionar cambios de una rama a otra en un repositorio. Es una herramienta fundamental para la colaboración en equipos, permitiendo la revisión de código y la integración controlada de cambios.
+
+Si tienes más preguntas o necesitas detalles adicionales, ¡avísame! 😊
+
+
 
 
