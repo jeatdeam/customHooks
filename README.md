@@ -353,6 +353,77 @@ Un **Pull Request** es una solicitud para revisar y fusionar cambios de una rama
 
 Si tienes más preguntas o necesitas detalles adicionales, ¡avísame! 😊
 
+//pase de parametros en el estado 
+¡Muy buena observación! Vamos a aclarar esto.
 
+### El uso de `useState` y el retorno de valores
+
+Cuando usas `useState` en React, en realidad estás creando una **variable de estado** que mantiene un valor a lo largo del ciclo de vida de un componente. El hook `useState` devuelve **dos valores**:
+
+1. El valor actual del estado (en tu caso, `data`).
+2. Una función para actualizar ese estado (`setData`).
+
+Entonces, en este fragmento de código:
+
+```javascript
+const [data, setData] = useState({ a: null, b: null, c: null });
+```
+
+`data` es el valor del estado, que comienza siendo `{ a: null, b: null, c: null }`, y `setData` es la función que puedes usar para actualizar ese estado.
+
+Ahora, en tu custom hook, si haces:
+
+```javascript
+return data;
+```
+
+Estás devolviendo el objeto completo `data`, que contiene las propiedades `a`, `b` y `c` (con valores iniciales `null` al principio).
+
+### La diferencia entre `data` y `a, b, c`
+
+Si quisieras devolver `a`, `b`, y `c** individualmente, no podrías hacerlo directamente como en:
+
+```javascript
+return a, b, c;  // Esto no es correcto
+```
+
+Sin embargo, lo que puedes hacer es **desestructurar** el objeto `data` y devolver sus valores de forma individual:
+
+```javascript
+return data.a, data.b, data.c;  // Esto tampoco funcionará correctamente
+```
+
+Esto no devolvería lo que esperas. El resultado sería simplemente el valor de `data.c`. Para devolver **varios valores**, debes hacer algo como:
+
+```javascript
+return { a: data.a, b: data.b, c: data.c };
+```
+
+O si prefieres devolverlos de manera directa, puedes desestructurarlos en el **return**:
+
+```javascript
+const { a, b, c } = data;
+return { a, b, c };
+```
+
+### Resumen
+
+- El `useState` devuelve un solo valor: el estado (en este caso, el objeto `data`).
+- Si haces `return data;`, devuelves el **objeto completo** con las propiedades `a`, `b`, y `c`.
+- Si quieres devolver las propiedades individuales `a`, `b`, y `c`, puedes desestructurarlas y devolver un objeto con esas propiedades.
+
+Así que, el retorno correcto de tu custom hook debe ser:
+
+```javascript
+return { a: data.a, b: data.b, c: data.c };
+```
+
+Esto asegura que, cuando utilices el custom hook, puedas destructurarlas en tu componente como:
+
+```javascript
+const { a, b, c } = customHook(url);
+``` 
+
+Esto es lo que probablemente querías lograr.
 
 
